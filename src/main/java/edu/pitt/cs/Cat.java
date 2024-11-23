@@ -14,7 +14,12 @@ public interface Cat {
 				return new CatSolution(id, name);
 			case MOCK:
 			    // TODO: Return a mock object that emulates the behavior of a real object.
-				return null;
+				Cat mockCat = Mockito.mock(Cat.class);
+				when(mockCat.getId()).thenReturn(id);
+				when(mockCat.getName()).thenReturn(name);
+				when(mockCat.getRented()).thenReturn(false); // Default behavior
+				when(mockCat.toString()).thenReturn("ID " + id + ". " + name);
+				return mockCat;
 			default:
 				assert(false);
 				return null;
@@ -24,7 +29,7 @@ public interface Cat {
 	// WARNING: You are not allowed to change any part of the interface.
 	// That means you cannot add any method nor modify any of these methods.
 	
-	public void rentCat();
+	public boolean rentCat();
 
 	public void returnCat();
 

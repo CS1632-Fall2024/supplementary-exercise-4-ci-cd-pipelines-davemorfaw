@@ -63,6 +63,16 @@ public class RentACatImpl implements RentACat {
 
 	public String listCats() {
 		// TODO: Fill in
+		StringBuilder rentableCats = new StringBuilder();
+
+		// Assuming you have a List<Cat> object called catList
+		for (Cat cat : cats) {
+			// Check if the cat is not rented
+			if ((boolean) cat.rentCat()) {
+				// Append the cat's toString() and a newline character
+				rentableCats.append(cat.toString()).append("\n");
+			}
+		}
 		return "WRITE CODE FOR THIS";
 	}
 
